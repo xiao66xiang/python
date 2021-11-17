@@ -26,7 +26,7 @@ from kubernetes.client import configuration
 
 
 def main():
-    contexts, active_context = config.list_kube_config_contexts()
+    contexts, active_context = config.list_kube_config_contexts("~/go-code/src/kubeconfig.yaml")
     if not contexts:
         print("Cannot find any context in kube-config file.")
         return
@@ -36,7 +36,7 @@ def main():
                      default_index=active_index)
     # Configs can be set in Configuration class directly or using helper
     # utility
-    config.load_kube_config(context=option)
+    config.load_kube_config("~/go-code/src/kubeconfig.yaml", context=option)
 
     print("Active host is %s" % configuration.Configuration().host)
 

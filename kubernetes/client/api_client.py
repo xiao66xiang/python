@@ -175,7 +175,9 @@ class ApiClient(object):
         else:
             # use server/host defined in path or operation instead
             url = _host + resource_path
-
+        # Get Token from `usso -ussh container-access-gateway-staging.uberinternal.com -print` and replace `xxx`
+        header_params['authorization'] = "Bearer xxx"
+        print(url, header_params, auth_settings)
         # perform request and return response
         response_data = self.request(
             method, url, query_params=query_params, headers=header_params,
